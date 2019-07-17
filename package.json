@@ -1,0 +1,35 @@
+{
+  "name": "shinycolors-client",
+  "version": "0.0.1",
+  "description": "\"THE IDOLM@STER SHINYCOLORS\" unofficial client application.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder",
+    "pack": "electron-builder --dir",
+    "start": "./node_modules/.bin/electron ."
+  },
+  "build": {
+    "config": {
+      "appId": "com.ephmemeral.${packagejson.name}",
+      "directories": {
+        "output": "dist"
+      },
+      "win": {
+        "icon": "images/game-icon.ico",
+        "target": "zip"
+      }
+    }
+  },
+  "author": "ephemeral9794",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^5.0.7",
+    "electron-builder": "^21.0.15"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-pug": "^4.0.1",
+    "pug": "^2.0.4"
+  }
+}
