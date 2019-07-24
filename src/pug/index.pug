@@ -1,0 +1,15 @@
+doctype html
+html(lang="ja")
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+		title THE IDOLM@STER SHINY COLORS
+		link(rel='stylesheet', href="../css/style.css")
+	body
+		header
+			div.titlebar
+				span#title アイドルマスター シャイニーカラーズ
+		main
+			//-webview(src="https://shinycolors.enza.fun/")
+			iframe#iframe(src="https://shinycolors.enza.fun/", width="1136", height="640")
+			script(src="../js/renderer.js")

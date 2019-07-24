@@ -2,12 +2,12 @@
   "name": "shinycolors-client",
   "version": "0.0.1",
   "description": "\"THE IDOLM@STER SHINYCOLORS\" unofficial client application.",
-  "main": "src/index.js",
+  "main": "src/js/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder",
-    "pack": "electron-builder --dir",
-    "start": "./node_modules/.bin/electron ."
+    "watch": "gulp watch",
+    "build": "gulp build",
+    "pack": "gulp pack",
+    "start": "electron ."
   },
   "build": {
     "config": {
@@ -24,12 +24,12 @@
   "author": "ephemeral9794",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^5.0.7",
-    "electron-builder": "^21.0.15"
+    "electron-builder": "^21.0.15",
+    "gulp": "^4.0.2",
+    "gulp-pug": "^4.0.1"
   },
   "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-pug": "^4.0.1",
+    "electron": "^5.0.7",
     "pug": "^2.0.4"
   }
 }
