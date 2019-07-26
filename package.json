@@ -1,35 +1,31 @@
-{
+ip{
   "name": "shinycolors-client",
   "version": "0.0.1",
   "description": "\"THE IDOLM@STER SHINYCOLORS\" unofficial client application.",
   "main": "src/js/main.js",
   "scripts": {
     "watch": "gulp watch",
+    "clean": "gulp clean",
     "build": "gulp build",
-    "pack": "gulp pack",
-    "start": "electron ."
-  },
-  "build": {
-    "config": {
-      "appId": "com.ephmemeral.${packagejson.name}",
-      "directories": {
-        "output": "dist"
-      },
-      "win": {
-        "icon": "images/game-icon.ico",
-        "target": "zip"
-      }
-    }
+    "pack:win": "gulp pack_win",
+    "pack:mac": "guip pack_mac",
+    "start": "gulp build & electron ./dest"
   },
   "author": "ephemeral9794",
   "license": "MIT",
   "devDependencies": {
+    "del": "^5.0.0",
     "electron-builder": "^21.0.15",
+    "electron-packager": "^14.0.3",
     "gulp": "^4.0.2",
-    "gulp-pug": "^4.0.1"
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
+    "typescript": "^3.5.3",
+    "electron": "^5.0.7"
   },
   "dependencies": {
-    "electron": "^5.0.7",
+    "lodash": "^4.17.15",
     "pug": "^2.0.4"
   }
 }

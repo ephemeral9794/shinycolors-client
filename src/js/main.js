@@ -1,18 +1,15 @@
 const { BrowserWindow, app } = require('electron')
 
 let window = null;
-const mainFile = "./src/html/index.html"
+const mainFile = "../html/index.html"
 
 app.on('ready', () => {
 	window = new BrowserWindow({
 		width: 1136, 
 		height: 670, 
-		resizable: true, 
-		useContentSize: true, 
 		frame: false, 
-		webPreferences: {
-			webviewTag: true
-		}
+		resizable: false, 
+		useContentSize: true, 
 	});
 
 	window.loadFile(mainFile);

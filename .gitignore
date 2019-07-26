@@ -89,3 +89,9 @@ typings/
 
 # Visual Studio Code
 .vs/
+.vscode/
+
+# build output
+dest/
+release/
+
