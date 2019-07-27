@@ -1,4 +1,4 @@
-ip{
+{
   "name": "shinycolors-client",
   "version": "0.0.1",
   "description": "\"THE IDOLM@STER SHINYCOLORS\" unofficial client application.",
@@ -7,22 +7,24 @@ ip{
     "watch": "gulp watch",
     "clean": "gulp clean",
     "build": "gulp build",
-    "pack:win": "gulp pack_win",
-    "pack:mac": "guip pack_mac",
+    "pack": "gulp pack",
     "start": "gulp build & electron ./dest"
   },
-  "author": "ephemeral9794",
+  "author": {
+    "name": "ephemeral9794",
+    "email": "kthm9794.hiro@gmail.com",
+    "url": "https://github.com/ephemeral9794/shinycolors-client"
+  },
   "license": "MIT",
   "devDependencies": {
     "del": "^5.0.0",
-    "electron-builder": "^21.0.15",
-    "electron-packager": "^14.0.3",
+    "electron-builder": "^21.1.5",
     "gulp": "^4.0.2",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.2",
     "gulp-typescript": "^5.0.1",
     "typescript": "^3.5.3",
-    "electron": "^5.0.7"
+    "electron": "^5.0.8"
   },
   "dependencies": {
     "lodash": "^4.17.15",

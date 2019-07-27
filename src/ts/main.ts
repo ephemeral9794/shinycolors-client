@@ -23,6 +23,7 @@ class MainApp {
             frame: false, 
             resizable: false, 
             useContentSize: true, 
+            icon: 'assets/icon.ico'
         });
 
         this.mainWindow.loadFile(this.mainFile);

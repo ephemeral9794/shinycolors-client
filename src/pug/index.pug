@@ -8,8 +8,12 @@ html(lang="ja")
 	body
 		header
 			div.titlebar
-				span#title アイドルマスター シャイニーカラーズ
+				ul.info
+					li
+						img#icon(src="https://shinycolors.enza.fun/icon_512x512.png")
+					li 
+						span#title アイドルマスター シャイニーカラーズ
+				
 		main
-			//-webview(src="https://shinycolors.enza.fun/")
 			iframe#iframe(src="https://shinycolors.enza.fun/", width="1136", height="640")
-			script(src="../js/renderer.js")
+		script(src="../js/renderer.js")

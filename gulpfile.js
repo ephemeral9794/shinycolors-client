@@ -7,7 +7,6 @@ const lodash = require('lodash')
 const fs = require('fs')
 const del = require('del')
 const {build, Platform, Arch} = require('electron-builder')
-const packager = require('electron-packager')
 
 var packageJson = require('./package.json')
 var tsconfig = require('./tsconfig.json')
@@ -59,52 +58,40 @@ exports.clean = (done) => {
 	.then(done())
 }
 exports.build = _build
-exports.pack_linux = series(_build, () => {
-	packager({
-		dir: 'dest',
-		name: packageJson.name,
-		arch: 'x64',
-		asar: true,
-		platform: 'linux',
-		out: 'release/linux',
-		overwrite: true
-	})
-});
-exports.pack_mac = series(_build, () => {
-	packager({
-		dir: 'dest',
-		name: packageJson.name,
-		arch: 'x64',
-		asar: true,
-		platform: 'darwin',
-		icon : 'build/icon.icns',
-		out: 'release/darwin',
-		overwrite: true
-	})
-});
-exports.pack_win = series(_build, (done) => {
-	/*packager({
-		dir: 'dest',
-		name: packageJson.name,
-		arch: 'x64',
-		asar: true,
-		platform: 'win32',
-		icon : 'build/game-icon.ico',
-		out: 'release/win32',
-		overwrite: true
-	})*/
+exports.pack = series(_build, (done) => {
 	build({
+		x64: true,
+		dir: false,
 		config: {
-			appId : 'com.ephemeral.${packageJson.name}',
+			appId : 'com.ephemeral.' + packageJson.name,
 			productName : packageJson.name,
 			directories : {
 				app: 'dest',
-				output: 'release/win32'
+				output: 'release'
 			},
 			win: {
-				target: 'zip',
-				icon: 'build/game-icon.ico'
-			}
-		}
-	}).finally(done())
-});
+				icon: 'build/icon.ico'
+			},
+			/*mac: {
+				target: 'default',
+				icon: 'build/icon.icns'
+			},
+			linux: {
+				icon: 'build/icon.ico'
+			}*/
+		},
+		win: [
+			'nsis',
+			'zip'
+		],
+		/*mac: [
+			'default',
+			'dmg'
+		],
+		linux: [
+			'AppImage',
+			'deb',
+			'tar.xz'
+		]*/
+	}).then(done())
+})
