@@ -1,4 +1,4 @@
-import { BrowserWindow, app, App, } from 'electron'
+import { BrowserWindow, app, App, ipcMain, IpcMainEvent, } from 'electron'
 
 class MainApp {
     private mainWindow: BrowserWindow | null = null;
@@ -23,12 +23,18 @@ class MainApp {
             frame: false, 
             resizable: false, 
             useContentSize: true, 
-            icon: 'assets/icon.ico'
+            icon: 'assets/icon.ico',
+            webPreferences: {
+                nodeIntegration: true
+            }
         });
 
         this.mainWindow.loadFile(this.mainFile);
         this.mainWindow.setMenu(null);
         this.mainWindow.webContents.openDevTools();
+        ipcMain.on("close", (e: IpcMainEvent) => {
+            this.mainWindow!.close();
+        });
 
         this.mainWindow.on('closed', () => {
             this.mainWindow = null;

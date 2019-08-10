@@ -13,7 +13,11 @@ html(lang="ja")
 						img#icon(src="https://shinycolors.enza.fun/icon_512x512.png")
 					li 
 						span#title アイドルマスター シャイニーカラーズ
-				
+				ul.buttons
+					li
+						button.control(type="button", id="close")
+							img(src="../assets/close.svg")
 		main
 			iframe#iframe(src="https://shinycolors.enza.fun/", width="1136", height="640")
-		script(src="../js/renderer.js")
+		script(type="text/javascript").
+			require("../js/renderer.js")

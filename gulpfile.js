@@ -58,12 +58,12 @@ exports.clean = (done) => {
 	.then(done())
 }
 exports.build = _build
-exports.pack = series(_build, (done) => {
+exports.pack_win = series(_build, (done) => {
 	build({
 		x64: true,
 		dir: false,
 		config: {
-			appId : 'com.ephemeral.' + packageJson.name,
+			appId : 'com.github.ephemeral9794.' + packageJson.name,
 			productName : packageJson.name,
 			directories : {
 				app: 'dest',
@@ -71,27 +71,55 @@ exports.pack = series(_build, (done) => {
 			},
 			win: {
 				icon: 'build/icon.ico'
-			},
-			/*mac: {
-				target: 'default',
-				icon: 'build/icon.icns'
-			},
-			linux: {
-				icon: 'build/icon.ico'
-			}*/
+			}
 		},
 		win: [
 			'nsis',
 			'zip'
-		],
-		/*mac: [
+		]
+	}).then(done())
+})
+exports.pack_mac = series(_build, (done) => {
+	build({
+		x64: true,
+		dir: false,
+		config: {
+			appId : 'com.github.ephemeral9794.' + packageJson.name,
+			productName : packageJson.name,
+			directories : {
+				app: 'dest',
+				output: 'release'
+			},
+			mac: {
+				target: 'default',
+				icon: 'build/icon.icns'
+			}
+		},
+		mac: [
 			'default',
 			'dmg'
-		],
+		]
+	}).then(done())
+})
+exports.pack_linux = series(_build, (done) => {
+	build({
+		x64: true,
+		dir: false,
+		config: {
+			appId : 'com.github.ephemeral9794.' + packageJson.name,
+			productName : packageJson.name,
+			directories : {
+				app: 'dest',
+				output: 'release'
+			},
+			linux: {
+				icon: 'build/icon.ico'
+			}
+		},
 		linux: [
 			'AppImage',
 			'deb',
 			'tar.xz'
-		]*/
+		]
 	}).then(done())
 })

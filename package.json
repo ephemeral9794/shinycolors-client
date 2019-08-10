@@ -7,7 +7,9 @@
     "watch": "gulp watch",
     "clean": "gulp clean",
     "build": "gulp build",
-    "pack": "gulp pack",
+    "pack:win": "gulp pack_win",
+    "pack:mac": "gulp pack_mac",
+    "pack:linux": "gulp pack_linux",
     "start": "gulp build & electron ./dest"
   },
   "author": {
@@ -18,13 +20,13 @@
   "license": "MIT",
   "devDependencies": {
     "del": "^5.0.0",
-    "electron-builder": "^21.1.5",
+    "electron-builder": "^21.2.0",
     "gulp": "^4.0.2",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.2",
     "gulp-typescript": "^5.0.1",
     "typescript": "^3.5.3",
-    "electron": "^5.0.8"
+    "electron": "^6.0.0"
   },
   "dependencies": {
     "lodash": "^4.17.15",
