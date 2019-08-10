@@ -1,5 +1,5 @@
 # shinycolors-client
-「アイドルマスター シャイニーカラーズ」非公式クライアント
+「[アイドルマスター シャイニーカラーズ](https://shinycolors.idolmaster.jp)」非公式クライアント
 
 ## 開発環境
 * OS : Windows 7 SP1 64bit
@@ -9,14 +9,15 @@
 * typescript : v3.5.3
 
 ## 免責事項
-当コードおよびリリースした実行形式ファイルを使用したことで発生したいかなる損害の一切の責任を負いません。
-
-各自、自己責任でお使い下さい。
+当コード及びリリースした実行形式ファイルを使用したことで発生したいかなる損害について、作者は一切の責任を負いません。  
+各自、自己責任でお使い下さい。  
+また、当ソフトウェアは個人ファンによる非公式ソフトウェアです。  
+株式会社バンダイナムコエンターテインメント様、株式会社BXD様、その他の関連会社様とは一切関係ございませんので、そちらへの問い合わせ等はお控えください。  
 
 ## License
 [MIT License](./LICENSE)
 
 ## Special Thanks
-[panakuma/shinymas-client](https://github.com/panakuma/shinymas-client)
-
-[shinycolors/shinycwp](https://github.com/shinycolors/shinycwp)
+[THE IDOLM@STER SHINYCOLORS](https://shinycolors.idolmaster.jp)  
+[panakuma/shinymas-client](https://github.com/panakuma/shinymas-client)  
+[shinycolors/shinycwp](https://github.com/shinycolors/shinycwp)  
