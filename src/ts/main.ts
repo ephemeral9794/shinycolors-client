@@ -3,7 +3,7 @@ import { BrowserWindow, app, App, ipcMain, IpcMainEvent, } from 'electron'
 class MainApp {
     private mainWindow: BrowserWindow | null = null;
     private app: App;
-    private mainFile: string = `html/index.html`
+    private entry: string = `html/index.html`
 
     constructor(app: App) {
         this.app = app;
@@ -29,12 +29,22 @@ class MainApp {
             }
         });
 
-        this.mainWindow.loadFile(this.mainFile);
-        this.mainWindow.setMenu(null);
-        this.mainWindow.webContents.openDevTools();
+        this.mainWindow.loadFile(this.entry);
+        //this.mainWindow.setMenu(null);
+        //this.mainWindow.webContents.openDevTools();
         ipcMain.on("close", (e: IpcMainEvent) => {
             this.mainWindow!.close();
         });
+        ipcMain.on("maximize", (e: IpcMainEvent, maximize: boolean) => {
+            if (!maximize) {
+                this.mainWindow!.maximize();
+            } else {
+                this.mainWindow!.unmaximize();
+            }
+        })
+        ipcMain.on("minimize", (e: IpcMainEvent) => {
+            this.mainWindow!.minimize()
+        })
 
         this.mainWindow.on('closed', () => {
             this.mainWindow = null;

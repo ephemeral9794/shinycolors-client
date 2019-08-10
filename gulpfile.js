@@ -71,6 +71,11 @@ exports.pack_win = series(_build, (done) => {
 			},
 			win: {
 				icon: 'build/icon.ico'
+			},
+			nsis: {
+				oneClick: false,
+				installerIcon: 'build/icon.ico',
+				license: 'LICENSE'
 			}
 		},
 		win: [
