@@ -74,6 +74,28 @@ body {
 				height: 30px;
 				border: 0;
 
+				&#screenshot {
+					padding: 0;
+					width: 40px;
+					height: 30px;
+					background-color: white;
+					transition-duration: 0.5s;
+
+					&:hover {
+						background-color: silver;
+					}
+				}
+				&#reload {
+					padding: 0;
+					width: 40px;
+					height: 30px;
+					background-color: white;
+					transition-duration: 0.5s;
+
+					&:hover {
+						background-color: silver;
+					}
+				}
 				&#maximize {
 					padding: 0;
 					width: 40px;

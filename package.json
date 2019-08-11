@@ -1,6 +1,6 @@
 {
   "name": "shinycolors-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "\"THE IDOLM@STER SHINYCOLORS\" unofficial client application.",
   "main": "src/js/main.js",
   "scripts": {
@@ -17,6 +17,10 @@
     "email": "kthm9794.hiro@gmail.com",
     "url": "https://github.com/ephemeral9794/shinycolors-client"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:ephemeral9794/shinycolors-client.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "del": "^5.0.0",
@@ -26,7 +30,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-typescript": "^5.0.1",
     "typescript": "^3.5.3",
-    "electron": "^6.0.0"
+    "electron": "^6.0.1"
   },
   "dependencies": {
     "lodash": "^4.17.15",

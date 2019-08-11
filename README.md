@@ -9,8 +9,7 @@
 * typescript : v3.5.3
 
 ## 免責事項
-当コード及びリリースした実行形式ファイルを使用したことで発生したいかなる損害について、作者は一切の責任を負いません。  
-各自、自己責任でお使い下さい。  
+当コード及びリリースした実行形式ファイルを使用したことで発生したいかなる損害について、作者は一切の責任を負いません。各自、自己責任でお使い下さい。  
 また、当ソフトウェアは個人ファンによる非公式ソフトウェアです。  
 株式会社バンダイナムコエンターテインメント様、株式会社BXD様、その他の関連会社様とは一切関係ございませんので、そちらへの問い合わせ等はお控えください。  
 
@@ -18,6 +17,6 @@
 [MIT License](./LICENSE)
 
 ## Special Thanks
-[THE IDOLM@STER SHINYCOLORS](https://shinycolors.idolmaster.jp)  
+[アイドルマスター シャイニーカラーズ](https://shinycolors.idolmaster.jp)  
 [panakuma/shinymas-client](https://github.com/panakuma/shinymas-client)  
 [shinycolors/shinycwp](https://github.com/shinycolors/shinycwp)  

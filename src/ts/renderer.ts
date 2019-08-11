@@ -1,4 +1,4 @@
-import { ipcRenderer, remote, IpcRendererEvent, BrowserWindow, Rectangle } from "electron"
+import { ipcRenderer, remote, Rectangle } from "electron"
 
 const iframe = document.getElementById("iframe") as HTMLIFrameElement | null
 /*iframe!.onload = (e: Event) => {
@@ -26,9 +26,9 @@ maximize!.onclick = (e: Event) => {
 	if (isMaximized) {
 		// 戻す
 		img!.item(0)!.src = images[0]
-		console.log(window.getBounds())
 		iframe!.width = rect.width.toString()
 		iframe!.height = rect.height.toString()
+		console.log("%s, %s", iframe!.width, iframe!.height)
 	} else {
 		// 最大化
 		img!.item(0)!.src = images[1]
@@ -40,4 +40,14 @@ maximize!.onclick = (e: Event) => {
 		console.log("%s, %s", iframe!.width, iframe!.height)
 	}
 	isMaximized = !isMaximized
+}
+// リロード
+const reload = document.getElementById("reload")
+reload!.onclick = (e: Event) => {
+	ipcRenderer.send("reload")
+}
+// スクリーンショット
+document.getElementById("screenshot")!.onclick = (e: Event) => {
+	var r: Rectangle = { width: +iframe!.width, height: +iframe!.height, x: 0, y: 30 } 
+	ipcRenderer.send("screenshot", r)
 }
