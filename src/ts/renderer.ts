@@ -19,17 +19,12 @@ const maximize = document.getElementById("maximize")
 const images = ["../assets/maximize.svg", "../assets/maximize_return.svg"]
 let rect = { width: 1136, height: 640 }
 maximize!.onclick = (e: Event) => {
+	isMaximized = !isMaximized
 	let window = remote.getCurrentWindow()
 	//console.log(isMaximized)
 	ipcRenderer.send("maximize", isMaximized)
 	const img = maximize!.getElementsByTagName("img")
 	if (isMaximized) {
-		// 戻す
-		img!.item(0)!.src = images[0]
-		iframe!.width = rect.width.toString()
-		iframe!.height = rect.height.toString()
-		//console.log("%s, %s", iframe!.width, iframe!.height)
-	} else {
 		// 最大化
 		img!.item(0)!.src = images[1]
 		const bounds = window.getBounds()
@@ -38,8 +33,13 @@ maximize!.onclick = (e: Event) => {
 		iframe!.width = bounds.width.toString()
 		iframe!.height = (bounds.height - 30).toString()
 		//console.log("%s, %s", iframe!.width, iframe!.height)
+	} else {
+		// 戻す
+		img!.item(0)!.src = images[0]
+		iframe!.width = rect.width.toString()
+		iframe!.height = rect.height.toString()
+		//console.log("%s, %s", iframe!.width, iframe!.height)
 	}
-	isMaximized = !isMaximized
 }
 // リロード
 const reload = document.getElementById("reload")

@@ -7,6 +7,7 @@ class MainApp {
     private app: App;
     private entry: string = `html/index.html`
     private screenshot: string;
+    private isMaximized: boolean;
 
     constructor(app: App) {
         this.app = app;
@@ -14,7 +15,7 @@ class MainApp {
         this.app.on('ready', this.onReady.bind(this));
         this.app.on('activate', this.onActivated.bind(this));
         this.screenshot = join(this.app.getPath('exe'), '../', 'Screenshots')
-        console.log(this.screenshot)
+        this.isMaximized = false
     }
 
     private onWindowAllClosed() {
@@ -26,6 +27,7 @@ class MainApp {
             width: 1136, 
             height: 672, 
             frame: false, 
+            show: false,
             resizable: false, 
             useContentSize: true, 
             icon: 'assets/icon.ico',
@@ -33,6 +35,7 @@ class MainApp {
                 nodeIntegration: true
             }
         });
+        this.mainWindow.once('ready-to-show', () => this.mainWindow!.show())
 
         this.mainWindow.loadFile(this.entry);
         //this.mainWindow.setMenu(null);
@@ -63,7 +66,8 @@ class MainApp {
             this.mainWindow!.close();
         });
         ipcMain.on("maximize", (e: IpcMainEvent, maximize: boolean) => {
-            if (!maximize) {
+            this.isMaximized = maximize;
+            if (maximize) {
                 this.mainWindow!.maximize();
             } else {
                 this.mainWindow!.unmaximize();
