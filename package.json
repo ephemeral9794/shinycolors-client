@@ -1,6 +1,6 @@
 {
   "name": "shinycolors-client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "\"THE IDOLM@STER SHINYCOLORS\" unofficial client application.",
   "main": "src/js/main.js",
   "scripts": {

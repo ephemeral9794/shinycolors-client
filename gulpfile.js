@@ -82,7 +82,9 @@ exports.pack_win = series(_build, (done) => {
 			'nsis',
 			'zip'
 		]
-	}).then(done())
+	})
+	.then(done())
+	.catch((err) => done(err))
 })
 exports.pack_mac = series(_build, (done) => {
 	build({
@@ -104,7 +106,9 @@ exports.pack_mac = series(_build, (done) => {
 			'default',
 			'dmg'
 		]
-	}).then(done())
+	})
+	.then(done())
+	.catch((err) => done(err))
 })
 exports.pack_linux = series(_build, (done) => {
 	build({
@@ -126,5 +130,7 @@ exports.pack_linux = series(_build, (done) => {
 			'deb',
 			'tar.xz'
 		]
-	}).then(done())
+	})
+	.then(done())
+	.catch((err) => done(err))
 })

@@ -13,7 +13,8 @@ class MainApp {
         this.app.on('window-all-closed', this.onWindowAllClosed.bind(this))
         this.app.on('ready', this.onReady.bind(this));
         this.app.on('activate', this.onActivated.bind(this));
-        this.screenshot = join(this.app.getAppPath(), 'Screenshots')
+        this.screenshot = join(this.app.getPath('exe'), '../', 'Screenshots')
+        console.log(this.screenshot)
     }
 
     private onWindowAllClosed() {
