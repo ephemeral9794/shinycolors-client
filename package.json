@@ -1,10 +1,9 @@
 {
   "name": "shinycolors-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "\"THE IDOLM@STER SHINYCOLORS\" unofficial client application.",
   "main": "src/js/main.js",
   "scripts": {
-    "watch": "gulp watch",
     "clean": "gulp clean",
     "build": "gulp build",
     "pack:win": "gulp pack_win",

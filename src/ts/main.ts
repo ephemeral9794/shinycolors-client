@@ -1,4 +1,4 @@
-import { BrowserWindow, app, App, ipcMain, IpcMainEvent, Rectangle, NativeImage, } from 'electron'
+import { BrowserWindow, app, App, ipcMain, IpcMainEvent, Rectangle, NativeImage, shell, } from 'electron'
 import { writeFileSync, mkdirSync, exists, existsSync } from 'fs'
 import { join } from 'path'
 
@@ -23,7 +23,7 @@ class MainApp {
     private create() {
         this.mainWindow = new BrowserWindow({
             width: 1136, 
-            height: 670, 
+            height: 672, 
             frame: false, 
             resizable: false, 
             useContentSize: true, 
@@ -41,14 +41,17 @@ class MainApp {
             mkdirSync(this.screenshot)
         }
 
+        ipcMain.on("picture", (e: IpcMainEvent) => {
+            shell.showItemInFolder(join(this.screenshot, "/*"))
+        })
         ipcMain.on("screenshot", (e: IpcMainEvent, r: Rectangle) => {
             this.mainWindow!.webContents.capturePage(r)
             .then((image: NativeImage) => {
                 const now = new Date()
                 const format = 'Screenshot_YYYYMMDD-hhmmss.png'
                 const file = join(this.screenshot, DateToString(now, format))
-                console.log(r)
-                console.log(file)
+                //console.log(r)
+                //console.log(file)
                 writeFileSync(file, image.toPNG())
             })
         })

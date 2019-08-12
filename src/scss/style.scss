@@ -18,14 +18,37 @@ body {
 
 #iframe {
 	overflow: hidden;
-	border: 0;
+	border: none;
 	padding: 0;
+}
+
+$buttons : (
+	'picture',
+	'screenshot',
+	'reload',
+	'minimize',
+	'maximize'
+);
+
+@mixin buttons {
+	padding: 0;
+	width: 40px;
+	height: 30px;
+	background-color: transparent;
+	transition: 0.25s ease;
+
+	&:hover {
+		@content;
+	}
 }
 
 .titlebar {
 	display: flex;
 	height: 30px;
-	background-color: white;
+	background-color: #f0f0f0;
+	border-color: gray;
+	border-style: solid;
+	border-width: 1px;
 
 	ul.info {
 		width: 100vw;
@@ -40,9 +63,9 @@ body {
 			vertical-align: top;
 
 			#icon {
-				margin : 1px;
-				width: 28px;
-				height: 28px;
+				//margin : 1px;
+				width: 30px;
+				height: 30px;
 				display: inline-block;
 			}
 			#title {
@@ -69,64 +92,20 @@ body {
 			.control {
 				display: inline-block;
 				padding: 0;
-				//margin-left: 2px;
 				width: 40px;
 				height: 30px;
 				border: 0;
 
-				&#screenshot {
-					padding: 0;
-					width: 40px;
-					height: 30px;
-					background-color: white;
-					transition-duration: 0.5s;
-
-					&:hover {
-						background-color: silver;
-					}
-				}
-				&#reload {
-					padding: 0;
-					width: 40px;
-					height: 30px;
-					background-color: white;
-					transition-duration: 0.5s;
-
-					&:hover {
-						background-color: silver;
-					}
-				}
-				&#maximize {
-					padding: 0;
-					width: 40px;
-					height: 30px;
-					background-color: white;
-					transition-duration: 0.5s;
-
-					&:hover {
-						background-color: silver;
-					}
-				}
-				&#minimize {
-					padding: 0;
-					width: 40px;
-					height: 30px;
-					background-color: white;
-					transition-duration: 0.5s;
-
-					&:hover {
-						background-color: silver;
+				@each $button in $buttons {
+					&##{$button} {
+						@include buttons() {
+							background-color: rgba(192, 192, 192, 0.6);
+						}
 					}
 				}
 				&#close {
-					padding: 0;
-					width: 40px;
-					height: 30px;
-					background-color: white;
-					transition-duration: 0.5s;
-
-					&:hover {
-						background-color: red;
+					@include buttons() {
+						background-color: red
 					}
 				}
 				
@@ -134,3 +113,4 @@ body {
 		}
 	}
 }
+

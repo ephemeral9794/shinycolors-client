@@ -20,7 +20,7 @@ const images = ["../assets/maximize.svg", "../assets/maximize_return.svg"]
 let rect = { width: 1136, height: 640 }
 maximize!.onclick = (e: Event) => {
 	let window = remote.getCurrentWindow()
-	console.log(isMaximized)
+	//console.log(isMaximized)
 	ipcRenderer.send("maximize", isMaximized)
 	const img = maximize!.getElementsByTagName("img")
 	if (isMaximized) {
@@ -28,7 +28,7 @@ maximize!.onclick = (e: Event) => {
 		img!.item(0)!.src = images[0]
 		iframe!.width = rect.width.toString()
 		iframe!.height = rect.height.toString()
-		console.log("%s, %s", iframe!.width, iframe!.height)
+		//console.log("%s, %s", iframe!.width, iframe!.height)
 	} else {
 		// 最大化
 		img!.item(0)!.src = images[1]
@@ -37,7 +37,7 @@ maximize!.onclick = (e: Event) => {
 		rect.height = +iframe!.height
 		iframe!.width = bounds.width.toString()
 		iframe!.height = (bounds.height - 30).toString()
-		console.log("%s, %s", iframe!.width, iframe!.height)
+		//console.log("%s, %s", iframe!.width, iframe!.height)
 	}
 	isMaximized = !isMaximized
 }
@@ -47,7 +47,12 @@ reload!.onclick = (e: Event) => {
 	ipcRenderer.send("reload")
 }
 // スクリーンショット
+const titlebar = document.getElementById("titlebar")
 document.getElementById("screenshot")!.onclick = (e: Event) => {
-	var r: Rectangle = { width: +iframe!.width, height: +iframe!.height, x: 0, y: 30 } 
+	var r: Rectangle = { width: +iframe!.width, height: +iframe!.height, x: 0, y: titlebar!.offsetHeight } 
 	ipcRenderer.send("screenshot", r)
+}
+// スクショフォルダ
+document.getElementById("picture")!.onclick = (e: Event) => {
+	ipcRenderer.send("picture")
 }

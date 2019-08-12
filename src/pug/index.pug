@@ -7,7 +7,7 @@ html(lang="ja")
 		link(rel='stylesheet', href="../css/style.css")
 	body
 		header
-			div.titlebar
+			div.titlebar(id="titlebar")
 				ul.info
 					li
 						img#icon(src="https://shinycolors.enza.fun/icon_512x512.png")
@@ -17,6 +17,8 @@ html(lang="ja")
 					li
 						button.control(type="button", id="screenshot")
 							img(src="../assets/screenshot.svg")
+						button.control(type="button", id="picture")
+							img(src="../assets/picture.svg")
 						button.control(type="button", id="reload")
 							img(src="../assets/reload.svg")
 						button.control(type="button", id="minimize")
