@@ -37,21 +37,15 @@ var assets = () => {
 var package_json = (done) => {
 	var json = lodash.cloneDeep(packageJson)
 	json.main = './js/main.js'
+	if (!fs.existsSync('dest')) {
+		fs.mkdirSync('dest')
+	}
 	fs.writeFile('dest/package.json', JSON.stringify(json), (err) => {
-		done();
+		done(err);
 	});
 }
 
-task('watch', function() {
-	return watch ([
-			'src/pug/*.pug',
-			'src/scss/*.scss',
-			'src/ts/*.ts'
-		], 
-		parallel(pug, scss, typescript)
-	);
-});
-var _build = parallel(html, css, typescript, assets, package_json);
+var _build = series(html, css, typescript, assets, package_json);
 
 exports.clean = (done) => {
 	del(['dest', 'release'])
