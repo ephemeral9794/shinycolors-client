@@ -1,12 +1,14 @@
 # shinycolors-client
 「[アイドルマスター シャイニーカラーズ](https://shinycolors.idolmaster.jp)」非公式クライアント
 
+![screenshot](./docs/screenshot.png)
+
 ## 開発環境
 * OS : Windows 7 SP1 64bit
 * Node.js : v12.8.0
-* Electron : v6.0.0
+* Electron : v6.0.10
 * pug : v2.0.4
-* typescript : v3.5.3
+* typescript : v3.6.3
 
 ## 免責事項
 当コード及びリリースした実行形式ファイルを使用したことで発生したいかなる損害について、作者は一切の責任を負いません。各自、自己責任でお使い下さい。  
