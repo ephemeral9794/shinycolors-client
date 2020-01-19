@@ -7,11 +7,11 @@ const iframe = document.getElementById("iframe") as HTMLIFrameElement | null
 
 // 終了
 document.getElementById("close")!.onclick = (e: Event) => {
-	ipcRenderer.send("close")
+	ipcRenderer.invoke("close")
 }
 // 最小化
 document.getElementById("minimize")!.onclick = (e: Event) => {
-	ipcRenderer.send("minimize")
+	ipcRenderer.invoke("minimize")
 }
 //　最大化
 let isMaximized = false;
@@ -22,7 +22,7 @@ maximize!.onclick = (e: Event) => {
 	isMaximized = !isMaximized
 	let window = remote.getCurrentWindow()
 	//console.log(isMaximized)
-	ipcRenderer.send("maximize", isMaximized)
+	ipcRenderer.invoke("maximize", isMaximized)
 	const img = maximize!.getElementsByTagName("img")
 	if (isMaximized) {
 		// 最大化
@@ -44,15 +44,16 @@ maximize!.onclick = (e: Event) => {
 // リロード
 const reload = document.getElementById("reload")
 reload!.onclick = (e: Event) => {
-	ipcRenderer.send("reload")
+	ipcRenderer.invoke("reload")
 }
 // スクリーンショット
 const titlebar = document.getElementById("titlebar")
 document.getElementById("screenshot")!.onclick = (e: Event) => {
 	var r: Rectangle = { width: +iframe!.width, height: +iframe!.height, x: 0, y: titlebar!.offsetHeight } 
-	ipcRenderer.send("screenshot", r)
+	ipcRenderer.invoke("screenshot", r)
+	iframe!.focus()
 }
 // スクショフォルダ
 document.getElementById("picture")!.onclick = (e: Event) => {
-	ipcRenderer.send("picture")
+	ipcRenderer.invoke("picture")
 }

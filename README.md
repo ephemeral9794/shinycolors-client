@@ -4,11 +4,11 @@
 ![screenshot](./docs/screenshot.png)
 
 ## 開発環境
-* OS : Windows 7 SP1 64bit
+* OS : Windows 10 version 1909 64bit
 * Node.js : v12.8.0
-* Electron : v6.0.10
+* Electron : v7.1.9
 * pug : v2.0.4
-* typescript : v3.6.3
+* typescript : v3.7.5
 
 ## 免責事項
 当コード及びリリースした実行形式ファイルを使用したことで発生したいかなる損害について、作者は一切の責任を負いません。各自、自己責任でお使い下さい。  

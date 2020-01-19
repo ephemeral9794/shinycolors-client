@@ -1,4 +1,4 @@
-import { BrowserWindow, app, App, ipcMain, IpcMainEvent, Rectangle, NativeImage, shell, } from 'electron'
+import { BrowserWindow, app, App, ipcMain, IpcMainEvent, Rectangle, NativeImage, shell, IpcMainInvokeEvent, } from 'electron'
 import { writeFileSync, mkdirSync, exists, existsSync } from 'fs'
 import { join } from 'path'
 
@@ -45,10 +45,11 @@ class MainApp {
             mkdirSync(this.screenshot)
         }
 
-        ipcMain.on("picture", (e: IpcMainEvent) => {
-            shell.showItemInFolder(join(this.screenshot, "/*"))
+        //ipcMain.on("picture", (e: IpcMainEvent) => {
+        ipcMain.handle("picture", async (e: IpcMainInvokeEvent) =>  {
+            shell.openItem(this.screenshot)
         })
-        ipcMain.on("screenshot", (e: IpcMainEvent, r: Rectangle) => {
+        ipcMain.handle("screenshot", (e: IpcMainInvokeEvent, r: Rectangle) => {
             this.mainWindow!.webContents.capturePage(r)
             .then((image: NativeImage) => {
                 const now = new Date()
@@ -59,13 +60,13 @@ class MainApp {
                 writeFileSync(file, image.toPNG())
             })
         })
-        ipcMain.on("reload", (e: IpcMainEvent) => {
+        ipcMain.handle("reload", (e: IpcMainInvokeEvent) => {
             this.mainWindow!.reload()
         })
-        ipcMain.on("close", (e: IpcMainEvent) => {
+        ipcMain.handle("close", (e: IpcMainInvokeEvent) => {
             this.mainWindow!.close();
         });
-        ipcMain.on("maximize", (e: IpcMainEvent, maximize: boolean) => {
+        ipcMain.handle("maximize", (e: IpcMainInvokeEvent, maximize: boolean) => {
             this.isMaximized = maximize;
             if (maximize) {
                 this.mainWindow!.maximize();
@@ -73,7 +74,7 @@ class MainApp {
                 this.mainWindow!.unmaximize();
             }
         })
-        ipcMain.on("minimize", (e: IpcMainEvent) => {
+        ipcMain.handle("minimize", (e: IpcMainInvokeEvent) => {
             this.mainWindow!.minimize()
         })
 
