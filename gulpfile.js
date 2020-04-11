@@ -1,15 +1,16 @@
-//const gulp = require('gulp');
-const { src, dest, parallel, watch, series, task} = require('gulp')
+const { src, dest, series} = require('gulp')
 const pug = require('gulp-pug');
 const sass = require('gulp-sass')
-const ts = require('gulp-typescript')
 const lodash = require('lodash')
 const fs = require('fs')
 const del = require('del')
-const {build, Platform, Arch} = require('electron-builder')
+const webpack = require('webpack')
+const webpackStream = require('webpack-stream')
+const {build} = require('electron-builder')
+const path = require('path')
 
+var [main, renderer] = require('./webpack.config')
 var packageJson = require('./package.json')
-var tsconfig = require('./tsconfig.json')
 
 var html = () => {
 	return src('src/pug/*.pug')
@@ -23,9 +24,8 @@ var css = () => {
 }
 
 var typescript = () => {
-	return src('src/ts/*.ts')
-	.pipe(ts(tsconfig))
-	.pipe(dest('dest/js'))
+	return webpackStream([main, renderer], webpack)
+	.pipe(dest(path.join('dest', 'js')))
 }
 
 var assets = () => {
@@ -45,7 +45,7 @@ var package_json = (done) => {
 	});
 }
 
-var _build = series(html, css, typescript, assets, package_json);
+var _build = series(html, css, /*typescript,*/ assets, package_json);
 
 exports.clean = (done) => {
 	del(['dest', 'release'])
