@@ -36,6 +36,11 @@ class MainApp {
             }
         });
         this.mainWindow.once('ready-to-show', () => this.mainWindow!.show())
+        this.mainWindow.webContents.on('new-window', (event, url) => {
+            event.preventDefault();
+            Electron.shell.openExternal(url);
+          });
+        
 
         this.mainWindow.loadFile(this.entry);
         //this.mainWindow.setMenu(null);
