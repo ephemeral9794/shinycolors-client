@@ -24,7 +24,7 @@
   "devDependencies": {
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
-    "electron": "^8.2.1",
+    "electron": "^8.2.4",
     "electron-builder": "^22.4.1",
     "gulp": "^4.0.2",
     "gulp-pug": "^4.0.1",
